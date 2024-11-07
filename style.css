@@ -1,0 +1,121 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+  color: #333;
+  margin: 0;
+  height: 100vh;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 2.5em;
+  color: #333;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+}
+
+/* Game Board Styling */
+#game-board {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  gap: 8px;
+  margin-top: 20px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.grid {
+  width: 100px;
+  height: 100px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2em;
+  font-weight: bold;
+  color: #333;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.grid:hover {
+  background-color: #e6f7ff;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+#status {
+  margin-top: 20px;
+  font-size: 1.2em;
+  padding: 10px 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  color: #333;
+}
+
+/* Button Styling */
+#reset-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1em;
+  color: #fff;
+  background-color: #66a6ff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+#reset-btn:hover {
+  background-color: #89f7fe;
+  box-shadow: 0px 7px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Winning Strike-through Styling */
+.grid.win::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background-color: black;
+  top: 50%;
+  left: 0;
+  transform-origin: center;
+  animation: strike 0.5s ease forwards;
+}
+
+.win.horizontal::after {
+  transform: rotate(0deg);
+}
+
+.win.vertical::after {
+  transform: rotate(90deg);
+}
+
+.win.diagonal-left::after {
+  transform: rotate(45deg);
+}
+
+.win.diagonal-right::after {
+  transform: rotate(-45deg);
+}
+
+
+@keyframes strike {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
